@@ -29,7 +29,7 @@ object ScrapperBuild extends Build {
   lazy val server = Project("server", file("server"))
     .dependsOn(common)
     .settings(defaultSettings: _*)
-    .settings(libraryDependencies ++= Seq(rome, redis, metricsJson, metricsServer, jackson, sprayServlet, jettyWebApp, servlet30))
+    .settings(libraryDependencies ++= Seq(rome, redis, metricsJson, metricsServer, jackson))
 
   lazy val client = Project("client", file("client"))
     .dependsOn(common)
