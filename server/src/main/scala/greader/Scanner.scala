@@ -188,8 +188,6 @@ class Scrapper extends Actor {
         remoteHit()
         remoteLatency(now - start)
         shifter ! Message(hot.copy(id = feed.id))
-      } else {
-        log.info("stop scrapping, id: {}", feed.id)
       }
   }
 }

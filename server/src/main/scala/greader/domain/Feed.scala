@@ -32,7 +32,7 @@ object Conversions {
 
   implicit def toFeed(feed: com.sun.syndication.feed.synd.SyndFeed) = {
     new Feed(id = feed.getUri, title = feed.getTitle
-      , description = feed.getDescriptionEx match { case x: SyndContent => Content(sanitize(x.getValue), x.getType) }
+      , description = feed.getDescriptionEx match { case x: SyndContent => Content(x.getValue, x.getType) }
       , items = feed.getEntries.map(_ match { case x: SyndEntry => Item(
         // id = unique(timestamp(x.getPublishedDate), x.getUri),
         uri = x.getUri

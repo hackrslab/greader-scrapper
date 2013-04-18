@@ -86,12 +86,10 @@ trait GReaderAPI extends HttpService {
       path("v1" / "feeds" / Rest) { url =>
         parameters('c.as[String]?) { c =>
           val maxId = c match { case Some(c) => Utils.decode(c) case _ => 0 }
-          encodeResponse(Gzip) {
-            respondWithMediaType(`application/json`) {
-              complete {
-                readOp()
-                (scanner ? Scan(url)).mapTo[Feed]
-              }
+          respondWithMediaType(`application/json`) {
+            complete {
+              readOp()
+              (scanner ? Scan(url)).mapTo[Feed]
             }
           }
         }

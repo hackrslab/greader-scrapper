@@ -3,7 +3,7 @@ package greader
 import gmetrics.GMetric._
 
 object Metrics {
-  implicit val gmetricServer = GMetricServer(name = "greader", hostname = "localhost", port = 8891)
+  implicit val gmetricServer = GMetricServer(name = "greader", hostname = "localhost", port = 8991)
 
   /* All Operations */
   val _readOps = Counter("greader.readOps")
