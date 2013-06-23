@@ -13,7 +13,7 @@ object ScrapperBuild extends Build {
     organization := "com.geekple"
     , version := "0.1"
     , resolvers ++= resolutionRepos
-    , libraryDependencies ++= Seq(akkaActor, akkaSlf4j, sprayCan, sprayRouting, sprayJson)
+    , libraryDependencies ++= Seq(akkaActor, akkaSlf4j, metricsCore, metricsJson, sprayCan, sprayRouting, sprayJson)
     , scalaVersion := "2.10.1"
     , scalacOptions ++= Seq("-feature", "-unchecked", "-deprecation", "-encoding", "utf8")
     , unmanagedListing
@@ -24,12 +24,12 @@ object ScrapperBuild extends Build {
 
   lazy val common = Project("common", file("common"))
     .settings(defaultSettings: _*)
-    .settings(libraryDependencies ++= Seq(metricsClient))
+    .settings(libraryDependencies ++= Seq())
 
   lazy val server = Project("server", file("server"))
     .dependsOn(common)
     .settings(defaultSettings: _*)
-    .settings(libraryDependencies ++= Seq(rome, redis, metricsJson, metricsServer, jackson))
+    .settings(libraryDependencies ++= Seq(rome, redis, jackson))
 
   lazy val client = Project("client", file("client"))
     .dependsOn(common)
