@@ -135,7 +135,7 @@ class LocalScanner {
     val fid = encodeURL(url)
     val stale = isStale(url)
     val startKey = if (maxId <= 0) java.lang.Double.POSITIVE_INFINITY else maxId - 0.1d
-    val endKey = 0d
+    val endKey = java.lang.Double.NEGATIVE_INFINITY
     val keys = redis.run(redis => {
       redis.zrevrangeByScore("f:z:items:"+fid, startKey, endKey, 0, count)
     }).toArray(new Array[String](0))
